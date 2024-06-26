@@ -1,5 +1,6 @@
-import dynamic from 'next/dynamic';
-const StudioWrapper = dynamic(() => import('@/components/StudioWrapper'), {ssr: false})
+// import dynamic from 'next/dynamic';
+// const StudioWrapper = dynamic(() => import('@/components/StudioWrapper'), {ssr: false})
+import StudioWrapper from '@/components/StudioWrapper'
 import { Metadata } from 'next';
 import ogImage from '@/img/meta-studio-og-image.jpeg';
 

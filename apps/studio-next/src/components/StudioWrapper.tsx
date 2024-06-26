@@ -8,8 +8,8 @@ import { AsyncAPIStudio } from './CodeEditor';
 import Preloader from './Preloader';
 
 function configureMonacoEnvironment() {
-  if (typeof window !== 'undefined') {
-    window.MonacoEnvironment = {
+  if ((typeof window.self !== 'undefined') && (window.self.navigator !== null)) {
+    window.self.MonacoEnvironment = {
       getWorker(_, label) {
         switch (label) {
         case 'editorWorkerService':
@@ -33,11 +33,10 @@ export default function StudioWrapper() {
   const [services, setServices] = useState<Services>();
   useEffect(() => {
     const fetchData = async () => {
-      const servicess = await createServices();
+      const servicess = await createServices() ;
       setServices(servicess)
       configureMonacoEnvironment();
     };
-
     fetchData();
   }, []);
 
